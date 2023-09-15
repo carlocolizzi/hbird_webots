@@ -1,6 +1,7 @@
 import numpy as np
 from math import sin, cos
-from utils import *
+
+from hbird_msgs.msg import Waypoint, State  #need to figure this out, file is in a different directory
 
 class Controller3D():
     """
@@ -17,7 +18,6 @@ class Controller3D():
         N.B. pid_gains is a dictionary structure where the keys are 'kp_x', 'kd_z', etc.
         """
         self.params = hbparams
-
 
         ### Control Gains ###
         # translational 
@@ -47,9 +47,27 @@ class Controller3D():
         self.kd_r = pid_gains.kd_r
 
 
+        self.integral = State()
+        self.integral.x = 0.0
+        self.integral.y = 0.0
+        self.integral.z = 0.0
+        self.integral.w = 0.0
+
+        self.prev_error = State()
+        self.prev_error.x = 0.0
+        self.prev_error.y = 0.0
+        self.prev_error.z = 0.0
+        self.prev_error.w = 0.0
+
         self.error = State()
+        self.error.x = 0.0
+        self.error.y = 0.0
+        self.error.z = 0.0
+        self.error.w = 0.0
 
-
+        self.m = 1.0    # mass of the drone
+        self.I = 1.0    # moment of rotational inertia about z axis 
+        self.g = 9.81   # gravity
 
     def compute_commands(self, setpoint, state):
         """
@@ -60,19 +78,26 @@ class Controller3D():
         - U (np.array):     array of control inputs {u1-u4}
 
         """
+        self.error = setpoint - state
+        self.integral += self.error
 
-        x_dd = (self.error.x)
+        derivative = State()
+        derivative = self.error - self.prev_error
 
-        self.error.z
-        Ux = m * (x_dd)
-        Uy = m * y_dd
-        Uz = m * (z_dd + g)
-        Uyaw = 
+        x_dd = (self.kp_x * self.error.x) + (self.ki_x * self.integral.x) + (self.kd_x * derivative.x)
+        y_dd = (self.kp_y * self.error.y) + (self.ki_y * self.integral.y) + (self.kd_y * derivative.y)
+        z_dd = (self.kp_z * self.error.z) + (self.ki_z * self.integral.z) + (self.kd_z * derivative.z)
+        w_dd = (self.kp_psi * self.error.w) + (self.ki_psi * self.integral.w) + (self.kd_r * derivative.w)
 
-        U = np.array([0.,0.,0.,0.])
+        self.prev_error = self.error
 
-        # your code here
+        Ux = self.m * x_dd
+        Uy = self.m * y_dd
+        Uz = self.m * (z_dd + self.g)
+        Uw = self.I * w_dd
 
-        
+        U = np.array([Ux, Uy, Uz, Uw])
+
+    
 
         return U
