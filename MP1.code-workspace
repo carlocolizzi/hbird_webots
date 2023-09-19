@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../hbird_common"
+		}
+	],
+	"settings": {
+		"ros.distro": "humble",
+		"python.autoComplete.extraPaths": [
+			"/home/ben/ros2_ws/install/hbird_webots/lib/python3.10/site-packages",
+			"/home/ben/ros2_ws/install/hbird_navigation/lib/python3.10/site-packages",
+			"/home/ben/ros2_ws/install/hbird_msgs/local/lib/python3.10/dist-packages",
+			"/opt/ros/humble/lib/python3.10/site-packages",
+			"/opt/ros/humble/local/lib/python3.10/dist-packages"
+		],
+		"python.analysis.extraPaths": [
+			"/home/ben/ros2_ws/install/hbird_webots/lib/python3.10/site-packages",
+			"/home/ben/ros2_ws/install/hbird_navigation/lib/python3.10/site-packages",
+			"/home/ben/ros2_ws/install/hbird_msgs/local/lib/python3.10/dist-packages",
+			"/opt/ros/humble/lib/python3.10/site-packages",
+			"/opt/ros/humble/local/lib/python3.10/dist-packages"
+		]
+	}
+}

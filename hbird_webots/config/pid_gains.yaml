@@ -13,14 +13,14 @@ kd_z: 0.
 #-----
 
 # rotational 
-kp_phi: 0.
-kp_theta: 0.
-kp_psi: 0.
+kp_phi: 0.5
+kp_theta: 0.5
+kp_psi: 0.5
 #-----
-ki_phi: 0.
-ki_theta: 0.
-ki_psi: 0.
+ki_phi: 0.5
+ki_theta: 0.5
+ki_psi: 0.5
 #-----
-kd_p: 0.
-kd_q: 0.
-kd_r: 0.
+kd_p: 0.5
+kd_q: 0.5
+kd_r: 0.5
