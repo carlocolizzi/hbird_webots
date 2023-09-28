@@ -4,15 +4,17 @@ https://github.com/carlocolizzi/hbird_webots/blob/b9f933ab9ecae979ebb8115ec7bea8
 ## Agent Control Node Implementation
 https://github.com/bgrantBoards/hbird_common/blob/41a433236e9a7f2c250c91f3eae9c1bd0ea09b30/hbird_navigation/hbird_navigation/agent_control_node.py
 
-### Write up
 
-### What did you learn from this? What did you not know before this assignment?
+# Write up
+
+
+## What did you learn from this? What did you not know before this assignment?
 We learned a lot about working with ROS, which was a relatively new coding environment for some of us. Prior to this assignment we did not know a lot about the PID controllers coupled system,  translational and rotational,  and how it affects the drone response. We got to learn more about how they are controlled, two PID controllers, one controlling the linear thrust set point, and the other controlling the angular position based on those set points. 
 
-### What was the most difficult aspect of the assignment?
+## What was the most difficult aspect of the assignment?
 The most difficult aspect for us was with the import statement in the controller file, specifically with accessing the pid_gains in the controller file that was preventing us from testing our code. There were also minor setbacks debugging our code using ROS command-line tools since it was difficult to trace our issues.
 
-### What was the easiest or most straightforward aspect of the assignment?
+## What was the easiest or most straightforward aspect of the assignment?
 Translating the formulas given to us in class into code in our controller was relatively easy and quick to do, we ran into some issues with the formatting but it didn’t take a lot to fix. Adjusting the z rise without getting an overshoot, along with the overall tuning PID controls,  although it did take us some time, was not too difficult since we were already familiar with it.  
 
 ## How long did this assignment take? What took the most time (Setup? Figuring out the codebase/ROS2? Coding in Python? Exploring the questions?)?
